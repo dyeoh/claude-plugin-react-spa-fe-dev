@@ -8,9 +8,17 @@ Works with any React + TypeScript project. No project-specific configuration req
 
 ## Install
 
-```bash
-claude plugin install react-spa@dyeoh
+**Step 1** — Add this repo as a marketplace (one-time per machine):
 ```
+/plugin marketplace add dyeoh/claude-plugin-react-spa-fe-dev
+```
+
+**Step 2** — Install the plugin:
+```
+/plugin install react-spa@dyeoh-claude-plugin-react-spa-fe-dev
+```
+
+Both commands are typed directly into Claude Code (CLI or VS Code extension) — not in a terminal.
 
 ---
 

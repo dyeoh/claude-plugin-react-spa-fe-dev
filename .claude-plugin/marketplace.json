@@ -1,0 +1,15 @@
+{
+  "name": "dyeoh-plugins",
+  "owner": {
+    "name": "Darren Yeoh",
+    "url": "https://github.com/dyeoh"
+  },
+  "plugins": [
+    {
+      "name": "react-spa",
+      "source": "./",
+      "description": "React SPA frontend development workflow with TDD enforcement, codebase memory cache, and feature branch pipeline.",
+      "version": "1.0.0"
+    }
+  ]
+}
