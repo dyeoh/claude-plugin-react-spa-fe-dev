@@ -145,7 +145,8 @@ Add `.react-spa-cache.md` to `.gitignore` if you don't want it committed, or com
 
 - **Vitest** or **Jest** — for TDD verification steps
 - **React Testing Library** — for component testing
-- **msw** — for API mocking in tests
+- **msw** — for API mocking in tests (network-level interception)
+- **fishery** + **@faker-js/faker** — for typed test data factories (`src/test/factories/`)
 - **TanStack Query** or **SWR** — for server state (the plugin understands both)
 - **Zustand** or **Redux** — for client state (auto-detected)
 

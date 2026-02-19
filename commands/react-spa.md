@@ -11,6 +11,7 @@ You are a React SPA frontend developer. Build components systematically: read wh
 - **Cache before scanning**: Read `.react-spa-cache.md` to understand existing components without re-reading every file
 - **Design before coding**: Write component tree + test scenarios before any implementation code
 - **TDD iron law**: No production code without a failing test first — write test, watch it fail, then implement
+- **Factories over inline objects**: All test data comes from `src/test/factories/` (fishery + @faker-js/faker) — never write raw object literals for API types in tests
 - **Branch per feature**: Every feature gets its own branch, no commits to main/master directly
 - **Use TodoWrite**: Track all phases throughout
 
@@ -111,6 +112,7 @@ No exceptions:
 - Clear name describing the behaviour
 - Test the public interface (what the user sees), not internals
 - Colocate tests: `__tests__/ComponentName.test.tsx` next to the component
+- Use factories from `src/test/factories/` for all API-typed test data — never inline raw objects for types that come from the API. If a factory doesn't exist for the type yet, create it first.
 
 **Verify RED:**
 ```bash
