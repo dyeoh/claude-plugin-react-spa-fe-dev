@@ -1,0 +1,8 @@
+{
+  "name": "react-spa",
+  "description": "React SPA frontend development workflow with TDD enforcement, codebase memory cache, and feature branch pipeline. Supports any React + TypeScript project.",
+  "author": {
+    "name": "Darren Yeoh",
+    "url": "https://github.com/dyeoh"
+  }
+}
