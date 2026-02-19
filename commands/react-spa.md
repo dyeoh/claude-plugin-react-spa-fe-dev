@@ -14,6 +14,8 @@ You are a React SPA frontend developer. Build components systematically: read wh
 - **Factories over inline objects**: All test data comes from `src/test/factories/` (fishery + @faker-js/faker) — never write raw object literals for API types in tests
 - **Branch per feature**: Every feature gets its own branch, no commits to main/master directly
 - **Use TodoWrite**: Track all phases throughout
+- **Document components**: JSDoc with `@example` on every `components/ui/` export; one-line JSDoc on sub-components
+- **Readable `cn()` calls**: Group Tailwind classes by concern (layout → hover → focus → disabled), one group per line with inline comments
 
 ---
 
@@ -137,6 +139,85 @@ Run the same test. Confirm it passes. Confirm no other tests broke.
 - Keep tests green throughout
 
 **Repeat** for next behaviour.
+
+### `cn()` Style Guide
+
+Group Tailwind classes by concern. Each group on its own line with a comment:
+
+```typescript
+className={cn(
+  // layout
+  'flex items-center gap-2 rounded-md px-3 py-1',
+  // typography
+  'text-sm font-medium text-zinc-400',
+  'transition-colors',
+  // hover
+  'hover:bg-zinc-800 hover:text-zinc-100',
+  // active / selected
+  'data-[state=active]:bg-zinc-700 data-[state=active]:text-zinc-100',
+  // focus
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
+  // disabled
+  'disabled:pointer-events-none disabled:opacity-50',
+  // variant + size (from lookup tables)
+  variantStyles[variant],
+  sizeStyles[size],
+  // caller overrides (always last)
+  className,
+)}
+```
+
+**Group order** (omit groups that don't apply):
+1. **layout** — positioning, display, flex, grid, sizing, spacing, border-radius
+2. **appearance** — background, border, shadow
+3. **typography** — font, text color, size, weight
+4. **transition** — `transition-colors`, `transition-all`, etc.
+5. **hover** — `hover:` prefixed classes
+6. **active / selected** — `data-[state=active]:`, `aria-selected:`, etc.
+7. **focus** — `focus-visible:`, `focus:` ring/outline
+8. **disabled** — `disabled:` prefixed classes
+9. **animation** — `data-[state=open]:animate-in`, etc.
+10. **variant/size** — values from lookup tables
+11. **className** — caller overrides, always last
+
+For variant lookup tables, use joined arrays:
+
+```typescript
+const variantStyles: Record<Variant, string> = {
+  default: [
+    'bg-brand text-white',
+    'hover:bg-brand-hover', // hover
+  ].join(' '),
+  destructive: [
+    'bg-red-600 text-white',
+    'hover:bg-red-700', // hover
+  ].join(' '),
+}
+```
+
+### Component Documentation
+
+Every `components/ui/` component must have:
+
+1. **JSDoc block** on the main export with `@example` showing typical usage
+2. **One-line JSDoc** on sub-components (e.g., `CardHeader`, `TabsTrigger`)
+3. **JSDoc on non-obvious props** with `@default` values
+
+```typescript
+/**
+ * Primary button component with variant and size support.
+ *
+ * @example
+ * ```tsx
+ * <Button>Save</Button>
+ * <Button variant="destructive" size="sm">Delete</Button>
+ * ```
+ */
+export function Button({ variant = 'default', ...props }: ButtonProps) { ... }
+
+/** Footer section — flex row, no top padding. */
+export function CardFooter({ className, ...props }: ...) { ... }
+```
 
 ### Common Rationalizations — Ignore These
 

@@ -53,6 +53,8 @@ Provide a complete, structured picture of:
 - Component export style (named vs. default)
 - Prop interface location (inline, separate file, above component)
 - CSS class handling (cn/clsx, cx, template literals)
+- `cn()` formatting style: Are classes grouped by concern (layout/hover/focus/disabled) with `// comments`? Or flat single-line? Note whichever pattern is used.
+- Component documentation: Do `components/ui/` exports have JSDoc with `@example`? Do sub-components have one-line JSDoc? Note what exists.
 
 ## Output Format
 
@@ -88,6 +90,12 @@ Return a structured report:
 
 ## Type/Interface Pattern
 [code example]
+
+## cn() / Styling Convention
+[grouped-by-concern with comments? flat single-line? variant lookup tables with .join(' ')? Note the pattern found.]
+
+## Component Documentation Convention
+[JSDoc with @example present? One-line JSDoc on sub-components? @default on props? Note what exists.]
 
 ## Key Files to Read
 [5-10 most important files for understanding the codebase, with file:line references]

@@ -13,6 +13,8 @@ You receive a list of files to review (new and modified). For each:
 3. **Test coverage** — every public behaviour has a test, tests are testing behaviour not implementation
 4. **Project conventions** — follows patterns from CLAUDE.md and existing code (imports, exports, naming, data-fetching, state)
 5. **React correctness** — no missing deps in `useEffect`, no stale closures in callbacks, no key collisions in lists
+6. **`cn()` formatting** — if the project uses `cn()`, check that Tailwind classes are grouped by concern (layout/hover/focus/disabled/etc.) with one group per line and `// comment` labels; variant lookup tables use `[...].join(' ')`
+7. **Component documentation** — `components/ui/` exports have JSDoc with `@example`; sub-components have one-line JSDoc; non-obvious props have `@default`
 
 ## Review Process
 

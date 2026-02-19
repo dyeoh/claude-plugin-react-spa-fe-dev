@@ -37,7 +37,17 @@ Choose exactly one pattern per data type:
 - Note which existing interfaces extend or compose into new ones
 - Flag any `any` types in existing code that the new feature should not perpetuate
 
-**5. Write test scenarios**
+**5. Specify styling & documentation conventions**
+- If the project uses `cn()` (clsx + tailwind-merge), note that implementation must follow the grouped style:
+  - One group per line: layout → appearance → typography → transition → hover → active → focus → disabled → variant/size → className
+  - Inline `// comment` labelling each group
+  - Variant lookup tables use `[...].join(' ')` with inline hover comments
+- If `components/ui/` components are being created, note JSDoc requirements:
+  - `@example` with usage snippet on every main export
+  - One-line JSDoc on sub-components (e.g., `CardHeader`, `TabsTrigger`)
+  - `@default` annotations on non-obvious props
+
+**6. Write test scenarios**
 For each component, write 3–5 plain-English test case descriptions:
 - One for the "happy path" render
 - One for empty/loading/error state
