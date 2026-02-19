@@ -39,6 +39,9 @@ Provide a complete, structured picture of:
 - Identify colocated (`__tests__/`) vs. separate (`tests/`) structure
 - Read 2–3 test files to extract: what gets tested, how async is handled, what gets mocked (API? module? timer?)
 - Find setup files (`setupTests.ts`, `vitest.setup.ts`)
+- Check `package.json` for `fishery` and `@faker-js/faker` — note if test factories are in use
+- If present, find the factories directory (`src/test/factories/`, `__factories__/`, etc.) and list what factories exist
+- Read 1 factory file to extract the pattern (Factory.define shape, traits, sequences)
 
 **5. API Types**
 - Find type definition files (`types.ts`, `api.ts`, `*.types.ts`)
@@ -78,6 +81,10 @@ Return a structured report:
 
 ## Test Pattern
 [code example showing a typical test]
+
+## Test Data Pattern
+[fishery/faker if present: factory directory path, example factory shape, list of existing factories]
+[static fixtures / inline objects if no factory library detected]
 
 ## Type/Interface Pattern
 [code example]
